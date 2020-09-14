@@ -3,19 +3,22 @@
 
 int main(int argc, char *argv[])
 {
+    
+    FILE *fp;
+    char buff[1024];
     for (size_t i = 1; i < argc; i++)
     {
-        char lectura[1024];
-        FILE *fp = fopen(argv[i], "r");
+        fp = fopen(argv[i], "r");
         if (fp == NULL)
         {
             printf("wcat: cannot open file\n");
             exit(1);
         }
-        // del archivo fp leda todo el texto a lectura hasta el final (\r)
-        fscanf(fp, " %[^\r]", lectura);
-        printf("%s\n", lectura);
-
+        
+        while (fgets(buff, 1024, fp))
+        {
+            printf("%s", buff);
+        }
         fclose(fp);
     }
     return 0;
