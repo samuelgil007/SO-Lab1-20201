@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
         fp = fopen(argv[i], "r");
         if (fp == NULL)
         {
+            printf("wzip: cannot open file\n");
             exit(1);
         }
 
